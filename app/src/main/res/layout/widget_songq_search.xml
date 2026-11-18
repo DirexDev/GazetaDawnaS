@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_search_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <!-- Pasek wyszukiwania w stylu Google z ikoną Song/Q -->
+    <LinearLayout
+        android:id="@+id/widget_search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@drawable/bg_google_search_pill"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="10dp"
+        android:paddingEnd="12dp">
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:src="@drawable/ic_songq_widget_logo"
+            android:contentDescription="@string/app_name" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Szukaj w Song/Q, YouTube, Muzyce..."
+            android:textColor="#5F6368"
+            android:textSize="13sp" />
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:src="@android:drawable/ic_menu_search"
+            android:tint="#4285F4"
+            android:contentDescription="Szukaj" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/widget_chip_yt"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:layout_weight="1"
+            android:background="#DD4B39"
+            android:gravity="center"
+            android:text="YouTube"
+            android:textColor="#FFFFFF"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/widget_chip_ytm"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="4dp"
+            android:layout_weight="1"
+            android:background="#212121"
+            android:gravity="center"
+            android:text="YT Music"
+            android:textColor="#FFFFFF"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/widget_chip_web"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="4dp"
+            android:layout_weight="1"
+            android:background="#4285F4"
+            android:gravity="center"
+            android:text="Web API"
+            android:textColor="#FFFFFF"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/widget_chip_spotify"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="4dp"
+            android:layout_weight="1"
+            android:background="#0F9D58"
+            android:gravity="center"
+            android:text="Spotify"
+            android:textColor="#FFFFFF"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>

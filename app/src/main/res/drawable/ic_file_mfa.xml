@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <!-- Square flat Song/Q .MFA file container -->
+    <path
+        android:fillColor="#DD4B39"
+        android:pathData="M6,4h26l10,10v30H6V4z" />
+    <path
+        android:fillColor="#B03020"
+        android:pathData="M32,4l10,10H32V4z" />
+    <!-- Song/Q geometric Q ring + play triangle -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M24,14c-5.52,0 -10,4.48 -10,10s4.48,10 10,10c1.9,0 3.67,-0.53 5.18,-1.45L32,35.37L34.12,33.25l-2.82,-2.82C32.98,28.7 34,26.47 34,24C34,18.48 29.52,14 24,14zM24,31c-3.87,0 -7,-3.13 -7,-7s3.13,-7 7,-7s7,3.13 7,7S27.87,31 24,31z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M22,20.5v7l6,-3.5L22,20.5z" />
+    <!-- Bottom flat MFA bar -->
+    <path
+        android:fillColor="#212121"
+        android:pathData="M6,37h36v7H6V37z" />
+    <path
+        android:fillColor="#F4B400"
+        android:pathData="M9,39h4v3H9zM15,39h4v3h-4zM21,39h4v3h-4z" />
+</vector>

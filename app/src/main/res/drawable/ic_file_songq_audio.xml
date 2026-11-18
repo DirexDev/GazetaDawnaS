@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <!-- Generic linked music file converted to Song/Q file emblem -->
+    <path
+        android:fillColor="#262626"
+        android:pathData="M6,4h26l10,10v30H6V4z" />
+    <path
+        android:fillColor="#DD4B39"
+        android:pathData="M32,4l10,10H32V4z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M20,16v11.55c-0.59,-0.34 -1.27,-0.55 -2,-0.55c-2.21,0 -4,1.79 -4,4s1.79,4 4,4s4,-1.79 4,-4V20h6v-4H20z" />
+    <path
+        android:fillColor="#DD4B39"
+        android:pathData="M29,26l6,4l-6,4V26z" />
+    <path
+        android:fillColor="#DD4B39"
+        android:pathData="M6,38h36v6H6V38z" />
+</vector>

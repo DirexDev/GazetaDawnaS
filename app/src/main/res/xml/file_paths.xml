@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <cache-path name="updates" path="updates/" />
+    <files-path name="mfa_files" path="mfa_library/" />
+    <files-path name="sq_files" path="sq_playlists/" />
+</paths>

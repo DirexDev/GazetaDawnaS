@@ -1,0 +1,93 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Authenticated Song/Q user profile and EQ settings",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Firebase Auth UID" },
+        "displayName": { "type": "string", "description": "Google account display name" },
+        "email": { "type": "string", "description": "Google account email (owner-only)" },
+        "photoUrl": { "type": "string", "description": "Google account avatar URL" },
+        "preferredPreset": { "type": "string", "description": "Active EQ preset name" },
+        "appVersion": { "type": "string", "description": "Installed Song/Q version" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Server timestamp on create" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Server timestamp on update" }
+      },
+      "required": ["userId", "displayName", "preferredPreset", "appVersion", "createdAt", "updatedAt"]
+    },
+    "SqPlaylist": {
+      "title": "SqPlaylist",
+      "description": "Song/Q .sq cloud-synced playlist metadata",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Owner Firebase Auth UID" },
+        "name": { "type": "string", "description": "Playlist display title" },
+        "description": { "type": "string", "description": "Playlist notes" },
+        "formatVersion": { "type": "string", "enum": ["SQ1"], "description": ".sq container format version" },
+        "trackCount": { "type": "integer", "description": "Number of tracks in playlist" },
+        "totalDurationMs": { "type": "integer", "description": "Total duration in milliseconds" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Server timestamp on create" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Server timestamp on update" }
+      },
+      "required": ["userId", "name", "description", "formatVersion", "trackCount", "totalDurationMs", "createdAt", "updatedAt"]
+    },
+    "SqPlaylistTrack": {
+      "title": "SqPlaylistTrack",
+      "description": "Lightweight track entry inside a .sq playlist (local .mfa, local audio, or web link)",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Owner Firebase Auth UID" },
+        "playlistId": { "type": "string", "description": "Parent playlist document ID" },
+        "title": { "type": "string", "description": "Track title" },
+        "artist": { "type": "string", "description": "Artist name" },
+        "album": { "type": "string", "description": "Album title" },
+        "sourceType": { "type": "string", "enum": ["MFA", "LOCAL", "WEB_LINK", "ITUNES_PREVIEW"], "description": "Track source type" },
+        "codecLabel": { "type": "string", "description": "Codec badge e.g. MFA/PCM-Z or SQ-LINK" },
+        "uriOrUrl": { "type": "string", "description": "Local URI or web search/stream URL" },
+        "artworkUrl": { "type": "string", "description": "Optional remote artwork URL" },
+        "durationMs": { "type": "integer", "description": "Track duration in milliseconds" },
+        "orderIndex": { "type": "integer", "description": "Position in playlist" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Server timestamp on create" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Server timestamp on update" }
+      },
+      "required": ["userId", "playlistId", "title", "artist", "album", "sourceType", "codecLabel", "uriOrUrl", "artworkUrl", "durationMs", "orderIndex", "createdAt", "updatedAt"]
+    },
+    "ListeningActivity": {
+      "title": "ListeningActivity",
+      "description": "Search and playback history entry",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Owner Firebase Auth UID" },
+        "queryOrTitle": { "type": "string", "description": "Search query or played track title" },
+        "artistName": { "type": "string", "description": "Artist name if available" },
+        "engine": {
+          "type": "string",
+          "enum": ["ITUNES", "MUSICBRAINZ", "YOUTUBE", "YOUTUBE_MUSIC", "SPOTIFY", "SOUNDCLOUD", "BANDCAMP", "MFA_LOCAL", "SQ_PLAYLIST"],
+          "description": "Source or search engine identifier"
+        },
+        "targetUrl": { "type": "string", "description": "Resolved search or media URL" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Server timestamp on create" }
+      },
+      "required": ["userId", "queryOrTitle", "artistName", "engine", "targetUrl", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "Owner-isolated Song/Q user profile and equalizer state"
+    },
+    "/users/{userId}/playlists/{playlistId}": {
+      "schema": { "$ref": "#/entities/SqPlaylist" },
+      "description": "Owner-isolated .sq cloud playlists"
+    },
+    "/users/{userId}/playlists/{playlistId}/tracks/{trackId}": {
+      "schema": { "$ref": "#/entities/SqPlaylistTrack" },
+      "description": "Tracks belonging to an owner-isolated .sq playlist"
+    },
+    "/users/{userId}/activity/{activityId}": {
+      "schema": { "$ref": "#/entities/ListeningActivity" },
+      "description": "Owner-isolated music search and playback activity feed"
+    }
+  }
+}

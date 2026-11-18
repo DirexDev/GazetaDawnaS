@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Song/Q</string>
+    <string name="company_name">DirexSoft Corporations</string>
+    <string name="founder_credit">Karol Kopeć</string>
+    <string name="app_version_display">1.15</string>
+    <string name="google_sign_in_title">Zaloguj się przez Google do Song/Q</string>
+    <string name="google_sign_in_loading">Łączenie z kontem Google do Song/Q…</string>
+    <string name="google_sign_in_button">Zaloguj się przez Google</string>
+    <string name="widget_player_label">Song/Q — Odtwarzacz</string>
+    <string name="widget_search_label">Song/Q — Wyszukiwarka Muzyki</string>
+    <string name="widget_search_hint">Szukaj w YouTube, YT Music, Spotify, Web…</string>
+    <string name="nav_library">Słuchaj teraz</string>
+    <string name="nav_explorer">Eksplorator</string>
+    <string name="nav_playlists">Playlisty .sq</string>
+    <string name="nav_search">Szukaj</string>
+    <string name="nav_equalizer">Korektor EQ</string>
+    <string name="nav_settings">System</string>
+</resources>

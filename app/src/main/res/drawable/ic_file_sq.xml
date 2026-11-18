@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <!-- Square flat Song/Q .SQ playlist file container -->
+    <path
+        android:fillColor="#4285F4"
+        android:pathData="M6,4h26l10,10v30H6V4z" />
+    <path
+        android:fillColor="#2B65C7"
+        android:pathData="M32,4l10,10H32V4z" />
+    <!-- Song/Q playlist lines + Q play badge -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M11,16h16v3H11V16zM11,22h12v3H11V22zM11,28h10v3H11V28z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M29,21v11l8,-5.5L29,21z" />
+    <!-- Bottom flat SQ bar -->
+    <path
+        android:fillColor="#212121"
+        android:pathData="M6,37h36v7H6V37z" />
+    <path
+        android:fillColor="#0F9D58"
+        android:pathData="M9,39h10v3H9z" />
+</vector>

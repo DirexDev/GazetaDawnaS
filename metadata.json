@@ -1,0 +1,6 @@
+{
+  "name": "Song/Q",
+  "description": "Zaawansowany odtwarzacz muzyki Song/Q od DirexSoft Corporations (Karol Kopeć) z obsługą formatów .mfa i .sq, korektorem EQ, gestami, widżetami i wyszukiwarką sieciową.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
