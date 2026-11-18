@@ -17,8 +17,39 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - name: Decode debug keystore
-        run: base64 -d debug.keystore.base64 > debug.keystore
+      - name: Accept Android SDK licenses
+        run: |
+          if [ -d "$ANDROID_HOME/cmdline-tools/latest/bin" ]; then
+            yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null 2>&1 || true
+          fi
+
+      - name: Locate project, prepare keystore and env
+        run: |
+          if [ -f "settings.gradle.kts" ]; then
+            PROJECT_DIR="."
+          else
+            FOUND=$(find . -maxdepth 2 -name "settings.gradle.kts" | head -n 1)
+            if [ -z "$FOUND" ]; then
+              echo "Nie znaleziono pliku settings.gradle.kts w repozytorium!"
+              exit 1
+            fi
+            PROJECT_DIR=$(dirname "$FOUND")
+          fi
+          echo "PROJECT_DIR=$PROJECT_DIR" >> "$GITHUB_ENV"
+
+          cd "$PROJECT_DIR"
+          if [ -f "debug.keystore.base64" ]; then
+            base64 -di debug.keystore.base64 > debug.keystore
+          elif [ ! -f "debug.keystore" ]; then
+            keytool -genkeypair -noprompt -keystore debug.keystore \
+              -storepass android -alias androiddebugkey -keypass android \
+              -keyalg RSA -keysize 2048 -validity 10000 \
+              -dname "CN=Android Debug,O=Android,C=US"
+          fi
+
+          if [ ! -f ".env" ]; then
+            cp .env.example .env 2>/dev/null || touch .env
+          fi
 
       - name: Set up Gradle 9.3.1
         uses: gradle/actions/setup-gradle@v4
@@ -26,9 +57,11 @@ jobs:
           gradle-version: 9.3.1
 
       - name: Build SongQ APK
+        working-directory: ${{ env.PROJECT_DIR }}
         run: gradle assembleDebug --no-daemon
 
       - name: Prepare SongQ.apk
+        working-directory: ${{ env.PROJECT_DIR }}
         run: |
           mkdir -p dist
           cp app/build/outputs/apk/debug/app-debug.apk dist/SongQ.apk
@@ -37,4 +70,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: SongQ-apk
-          path: dist/SongQ.apk
+          path: ${{ env.PROJECT_DIR }}/dist/SongQ.apk
